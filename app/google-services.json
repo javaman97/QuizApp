@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "360833616114",
+    "project_id": "dailyquiz-af9d0",
+    "storage_bucket": "dailyquiz-af9d0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360833616114:android:ed893cfe1d836b4d26286b",
+        "android_client_info": {
+          "package_name": "com.aman.dailyquiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5oTfnoKEHy9kW4n7pnYCfrYVvb9M0JI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
