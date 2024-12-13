@@ -1,6 +1,7 @@
 package com.aman.dailyquiz
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                     val quizModel = snapshot.getValue(QuizModel::class.java)
                     if(quizModel!=null){
                         quizModelList.add(quizModel)
+                        Log.i("Firebase Data", "$quizModel")
                     }
                 }
             }
