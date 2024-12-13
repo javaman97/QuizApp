@@ -58,12 +58,14 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 val seconds = millisUntilFinished/1000
                 val mins = seconds/60
                 val remainingSeconds = seconds%60
-                binding.timerIndicatorTextview.text = String.format("%02d:02", mins, remainingSeconds)
+                binding.timerIndicatorTextview.text = String.format("%02d:%02d", mins, remainingSeconds)
 
             }
 
             override fun onFinish() {
-
+                binding.timerIndicatorTextview.text = "00:00"
+                Toast.makeText(this@QuizActivity,"Times Up!",Toast.LENGTH_SHORT).show()
+                finishQuiz()
             }
 
         }.start()
