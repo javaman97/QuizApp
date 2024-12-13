@@ -21,6 +21,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         var time : String = ""
     }
     private lateinit var binding: ActivityQuizBinding
+    private var countDownTimer:CountDownTimer?=null
     var currentQuestionIndex = 0
     var selectedAnswer = ""
     var score = 0
@@ -41,7 +42,6 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             btn1.setOnClickListener(this@QuizActivity)
             btn2.setOnClickListener(this@QuizActivity)
             btn3.setOnClickListener(this@QuizActivity)
-            nextBtn.setOnClickListener(this@QuizActivity)
         }
 
         loadQuestions()
@@ -75,6 +75,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private fun loadQuestions() {
       selectedAnswer = ""
         if (currentQuestionIndex == questionModelList.size){
+            countDownTimer?.cancel()
             finishQuiz()
             return
         }
@@ -125,7 +126,31 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    private fun highlightCorrectAnswer() {
+        binding.apply {
+            when (questionModelList[currentQuestionIndex].correct) {
+                btn0.text -> btn0.setBackgroundColor(getColor(R.color.green))
+                btn1.text -> btn1.setBackgroundColor(getColor(R.color.green))
+                btn2.text -> btn2.setBackgroundColor(getColor(R.color.green))
+                btn3.text -> btn3.setBackgroundColor(getColor(R.color.green))
+            }
+        }
+    }
+
+    private fun resetOptions() {
+        binding.apply {
+            btn0.setBackgroundColor(getColor(R.color.gray))
+            btn1.setBackgroundColor(getColor(R.color.gray))
+            btn2.setBackgroundColor(getColor(R.color.gray))
+            btn3.setBackgroundColor(getColor(R.color.gray))
+        }
+        selectedAnswer = ""
+    }
+
     override fun onClick(v: View?) {
+        if (selectedAnswer.isNotEmpty()) {
+            return
+        }
 
         binding.apply {
             btn0.setBackgroundColor(getColor(R.color.gray))
@@ -135,29 +160,28 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         val clickBtn = v as Button
+        selectedAnswer = clickBtn.text.toString()
 
-        if(clickBtn.id == R.id.next_btn){
 
-            if(selectedAnswer.isEmpty()){
-                Toast.makeText(applicationContext, "Please select answer to continue", Toast.LENGTH_SHORT).show()
-                return
-            }
+
 
             if (selectedAnswer == questionModelList[currentQuestionIndex].correct)
             {
+                clickBtn.setBackgroundColor(getColor(R.color.green))
                 score++
 
                 Log.i("Score of Quiz", score.toString())
+            }else {
+                clickBtn.setBackgroundColor(getColor(R.color.red))
+
+                highlightCorrectAnswer()
             }
-             currentQuestionIndex++
+
+        clickBtn.postDelayed({
+            currentQuestionIndex++
             loadQuestions()
-        } else{
-
-            selectedAnswer = clickBtn.text.toString()
-            clickBtn.setBackgroundColor(getColor(R.color.orange))
-
-        }
-
+            resetOptions()
+        },2000)
     }
 
 

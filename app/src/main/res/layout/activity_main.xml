@@ -9,8 +9,9 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="160dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/main_image" />
 
     <LinearLayout
@@ -18,24 +19,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/blue"
-        android:padding="8dp"
+        android:backgroundTint="@color/orange"
+        android:padding="5dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Daily Quiz App"
+            android:text="QuizKaro"
             android:gravity="center"
-            android:textSize="34sp"
-            android:letterSpacing="0.1"
+            android:textSize="28sp"
+            android:letterSpacing="0.2"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lets play this awesome quiz app to enhance our knowledge"
+            android:text="Let's play this awesome quiz app to enhance our knowledge"
             android:gravity="center"
             android:textSize="18sp"
             android:layout_margin="16dp"
@@ -44,12 +45,19 @@
 
 
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Criteria to pass each quiz is 60%"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_margin="8dp"
+        android:textStyle="italic"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All items"
-        android:layout_marginTop="16dp"
+        android:text="All Quizzes"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="4dp"
         android:textSize="20sp"
         android:textStyle="bold"/>
