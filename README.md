@@ -38,7 +38,7 @@ This is a Quiz Android application built using Kotlin. The app allows users to a
 - **Dynamic Questions**: Questions are dynamically loaded from a predefined list.
 - **Color Feedback**: Buttons change color to indicate whether the selected answer is correct or incorrect.
 - **Results Dialog**: Displays the user's performance at the end of the quiz.
- **Firebase**: Used as backend to fetch Quizzes Data .
+- **Firebase**: Used as backend to fetch Quizzes Data.
 
 ## Screenshots
 
